@@ -11,8 +11,9 @@ export default function TodoInput(
         try{
             await onCreate(text)
             setText('')
-        }catch(e){}
-        //...
+        }catch(e){
+            // do something ?
+        }
     }
 
         
