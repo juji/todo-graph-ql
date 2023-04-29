@@ -10,6 +10,8 @@ export default function Home() {
 
   const {
     todos,
+    loading,
+    error,
     update,
     remove,
     add
@@ -17,17 +19,21 @@ export default function Home() {
 
   return (
       <Layout>
+
         <TodoInput onCreate={add} />
 
-        {todos.map(v => {
+        { loading ? <p>Loading....</p> : 
+          error ? <p className="text-red-600">{JSON.stringify(error)}</p> : 
+          (todos||[]).map((v:{ id: string, text: string, done: boolean }) => {
 
-          return <TodoItem 
-            key={v.id} 
-            item={v} 
-            onChange={update} 
-            onRemove={remove} />
-
-        })}
+            return <TodoItem 
+              key={v.id} 
+              item={v} 
+              onChange={update} 
+              onRemove={remove} />
+  
+          })
+        }
 
       </Layout>
   )

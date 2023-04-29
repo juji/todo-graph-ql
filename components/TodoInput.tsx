@@ -21,6 +21,7 @@ export default function TodoInput(
     return <form onSubmit={onSubmit}>
         <div className="flex">
             <input 
+                maxLength={255}
                 type="text" 
                 placeholder="Create item here" 
                 className="input input-bordered flex-auto mr-3" 
