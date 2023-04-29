@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DB_ADMIN")
+  url      = env("DATABASE_URL")
 
   // https://www.prisma.io/docs/concepts/components/prisma-schema/relations/relation-mode
   // checkout why we use @@index at TodoItem
