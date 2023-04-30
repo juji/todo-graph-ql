@@ -43,7 +43,9 @@ const UPDATE_TODO = gql`
 
 export default function useTodo(){
 
-    const { data, loading, error } = useQuery(GET_TODOS);
+    const { data, loading, error } = useQuery(GET_TODOS,{
+        pollInterval: 5000,
+    });
     
     const [
         createTodo, 

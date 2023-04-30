@@ -7,7 +7,7 @@ This is an todo app created as an exercise, using these techs:
 - Tailwind + DaisyUI
 
 ## Starting up
-to start, change `.env` file with content you found [here](https://notepad.link/share/wzfERnQ3NUIRHK3lp9lh)
+to start, create `.env` file in the root directory, with the content you found [here](https://notepad.link/share/wzfERnQ3NUIRHK3lp9lh)
 
 After that:
 ```
