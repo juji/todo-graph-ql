@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, useRef } from 'react'
+import { ChangeEvent, useState, useRef, useEffect } from 'react'
 
 const useDebounce = ( n = 500 ) => {
     
@@ -27,11 +27,23 @@ export default function TodoItem({
 
     const { id, text, done } = item
 
-    const [isDone, setIsDone] = useState(done)
-    const [textContent, setTextContent] = useState(text)
+    const [ isDone, setIsDone ] = useState(done)
+    const [ textContent, setTextContent ] = useState(text)
     const [ visible, setVisible ] = useState(true)
     const debounce = useDebounce()
 
+
+    // remote changes should be addressed
+    useEffect(() => {
+        if(done!==isDone) setIsDone(done)
+    },[done])
+
+    useEffect(() => {
+        if(text!==textContent) setTextContent(text)
+    },[text])
+
+
+    //
     const remove = () => {
         setVisible(false)
         try{ onRemove(id) }catch(e){
@@ -59,7 +71,7 @@ export default function TodoItem({
                 className="checkbox" />
         </div>
         <input
-            disabled={done}
+            disabled={isDone}
             value={textContent} 
             type="text" 
             placeholder="Update todo here" 
