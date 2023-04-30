@@ -1,6 +1,7 @@
 
 import query from './Query.graphql'
 import mutation from './Mutation.graphql'
+import cache from './Cache.graphql'
 
 import helloResolvers from './hello/resolvers'
 import helloTypeDef from './hello/typeDef.graphql'
@@ -22,6 +23,7 @@ export const resolvers = {
 export const typeDefs = [
     query,
     mutation,
+    cache,
     helloTypeDef,
     todoTypeDef
 ]

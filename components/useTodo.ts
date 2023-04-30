@@ -44,7 +44,9 @@ const UPDATE_TODO = gql`
 export default function useTodo(){
 
     const { data, loading, error } = useQuery(GET_TODOS,{
-        pollInterval: 5000,
+        pollInterval: 30000,
+        // fetchPolicy: 'cache-first', // Used for first execution
+        // nextFetchPolicy: 'cache-first', // Used for subsequent executions
     });
     
     const [
