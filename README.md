@@ -7,14 +7,20 @@ This is an todo app created as an exercise, using these techs:
 - Tailwind + DaisyUI
 
 ## Starting up
-to start, create `.env` file in the root directory, with the content you found [here](https://notepad.link/share/wzfERnQ3NUIRHK3lp9lh)
+first, install dependencies:
+```
+pnpm i
+```
 
-Or, just create a new mysql database, and setup `.env` file as:
+
+to start, create `.env` file in the root directory.
+You will need to add `DATABASE_URL` to te file:
 ```
 # change password, user, host, and db below to fit your setting
 DATABASE_URL="mysql://password:user@host/db"
 ```
 
+## Setting up db
 In case you created a new mysql database, run `prisma migrate`
 ```
 npx prisma migrate dev --name init
@@ -25,9 +31,10 @@ In case of PlanetScale, use
 npx prisma db push
 ```
 
+## Starting (dev)
 After that:
 ```
-pnpm i && pnpm dev
+pnpm dev
 ```
 
 and go to [http://localhost:3000](http://localhost:3000).
