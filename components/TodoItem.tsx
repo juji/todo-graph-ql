@@ -75,7 +75,7 @@ export default function TodoItem({
             value={textContent} 
             type="text" 
             placeholder="Update todo here" 
-            className="input input-bordered flex-auto mx-3" 
+            className="input input-bordered flex-auto mx-3 min-w-[200px]" 
             onChange={onChangeText}
         />
         <button

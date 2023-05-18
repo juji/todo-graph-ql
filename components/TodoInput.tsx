@@ -12,7 +12,7 @@ export default function TodoInput(
     const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if(!text) return;
-        
+
         try{
             await onCreate(text)
             setText('')
@@ -30,7 +30,7 @@ export default function TodoInput(
                 maxLength={255}
                 type="text" 
                 placeholder="Create item here" 
-                className="input input-bordered flex-auto mr-3" 
+                className="input input-bordered flex-auto mr-3 min-w-[200px]" 
                 value={text}
                 onChange={e => setText(e.target.value)}
             />
