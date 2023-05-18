@@ -29,7 +29,7 @@ npx prisma migrate dev --name init
 ```
 
 
-In case of PlanetScale, use 
+In case of [PlanetScale](https://planetscale.com/), use 
 ```bash
 npx prisma db push
 ```
