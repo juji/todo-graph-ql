@@ -16,9 +16,9 @@ pnpm i
 to start, create `.env` file in the root directory.
 You will need to add `DATABASE_URL` to the file:
 ```bash
-# change password, user, host, and db below to fit your setting
+# change user, password, host, and db below to fit your setting
 # maybe, add connection setting as well: ?sslaccept=strict
-DATABASE_URL="mysql://password:user@host/db"
+DATABASE_URL="mysql://user:password@host/db"
 ```
 This example uses MySQL.
 
