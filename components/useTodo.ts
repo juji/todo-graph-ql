@@ -42,9 +42,9 @@ const GET_TODOS = `
     }
 `
 
-const fetcher = async () => {
+const fetcher = async (query: string) => {
     const response = await fetch("/api/graphql", {
-      body: JSON.stringify({ query: GET_TODOS }),
+      body: JSON.stringify({ query }),
       headers: { "Content-type": "application/json" },
       method: "POST"
     });
@@ -55,7 +55,7 @@ const fetcher = async () => {
 export default function useTodo(){
 
     // using swr to revalidate is better than using pollInterval
-    const { data, error, isLoading, mutate } = useSWR('getTodos', fetcher)
+    const { data, error, isLoading, mutate } = useSWR(GET_TODOS, fetcher)
 
     // const { data, loading, error } = useQuery(GET_TODOS,{
     //     pollInterval: 30000,
