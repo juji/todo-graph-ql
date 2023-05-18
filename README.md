@@ -26,6 +26,8 @@ In case you created a new mysql database, run `prisma migrate`
 npx prisma migrate dev --name init
 ```
 
+This example uses MySQL.
+
 In case of PlanetScale, use 
 ```bash
 npx prisma db push
