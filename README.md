@@ -49,6 +49,6 @@ Live version is available at:
 
 [https://endearing-platypus-e762b8.netlify.app](https://endearing-platypus-e762b8.netlify.app)
 
-Make sure i know when you are accessing live version, because the db might need to be wwoken up.
+Make sure i know when you are accessing live version, because the db might need to be woken up.
 
 cheers, [https://jujiyangasli.com](jujiyangasli.com)
