@@ -1,16 +1,5 @@
-import { gql, useQuery, useMutation } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 import useSWR from "swr";
-
-const GET_TODOS = gql`
-    query Query {
-        getTodoAll {
-            done
-            id
-            text
-            deletedAt
-        }
-    }
-`
 
 const CREATE_TODO = gql`
     mutation CreateTodo($text: String) {
@@ -42,9 +31,20 @@ const UPDATE_TODO = gql`
     }
 `
 
+const GET_TODOS = `
+    query Query {
+        getTodoAll {
+            done
+            id
+            text
+            deletedAt
+        }
+    }
+`
+
 const fetcher = async () => {
     const response = await fetch("/api/graphql", {
-      body: JSON.stringify({ query: GET_TODOS.loc?.source.body }),
+      body: JSON.stringify({ query: GET_TODOS }),
       headers: { "Content-type": "application/json" },
       method: "POST"
     });
@@ -53,8 +53,6 @@ const fetcher = async () => {
 };
 
 export default function useTodo(){
-
-    // console.log(GET_TODOS)
 
     // using swr to revalidate is better than using pollInterval
     const { data, error, isLoading, mutate } = useSWR('getTodos', fetcher)
