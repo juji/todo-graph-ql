@@ -11,6 +11,8 @@ export default function TodoInput(
     const [ text, setText ] = useState('')
     const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        if(!text) return;
+        
         try{
             await onCreate(text)
             setText('')
@@ -33,6 +35,7 @@ export default function TodoInput(
                 onChange={e => setText(e.target.value)}
             />
             <button 
+                type="submit"
                 disabled={!!createLoading}
                 className="btn btn-primary flex-none">Add</button>
         </div>
