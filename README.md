@@ -5,6 +5,7 @@ This is an todo app created as an exercise, using these techs:
 - NextJs
 - GraphQL
 - Tailwind + DaisyUI
+- PlanetScale MySQL
 
 ## Starting up
 first, install dependencies:
