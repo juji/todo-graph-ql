@@ -20,6 +20,7 @@ You will need to add `DATABASE_URL` to the file:
 # maybe, add connection setting as well: ?sslaccept=strict
 DATABASE_URL="mysql://password:user@host/db"
 ```
+This example uses MySQL.
 
 ## Setting up db
 In case you created a new mysql database, run `prisma migrate`
@@ -27,7 +28,6 @@ In case you created a new mysql database, run `prisma migrate`
 npx prisma migrate dev --name init
 ```
 
-This example uses MySQL.
 
 In case of PlanetScale, use 
 ```bash
