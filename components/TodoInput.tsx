@@ -1,8 +1,11 @@
 import { FormEvent, useState } from 'react'
 
 export default function TodoInput(
-    { onCreate }:
-    { onCreate: (text: string) => void }
+    { onCreate, createLoading }:
+    { 
+        onCreate: (text: string) => void 
+        createLoading: boolean
+    }
 ){
 
     const [ text, setText ] = useState('')
@@ -21,6 +24,7 @@ export default function TodoInput(
     return <form onSubmit={onSubmit}>
         <div className="flex">
             <input 
+                disabled={!!createLoading}
                 maxLength={255}
                 type="text" 
                 placeholder="Create item here" 
@@ -28,7 +32,9 @@ export default function TodoInput(
                 value={text}
                 onChange={e => setText(e.target.value)}
             />
-            <button className="btn btn-primary flex-none">Add</button>
+            <button 
+                disabled={!!createLoading}
+                className="btn btn-primary flex-none">Add</button>
         </div>
         <br />
         <div className="divider"></div> 

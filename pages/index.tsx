@@ -12,6 +12,7 @@ export default function Home() {
     todos,
     loading,
     error,
+    createLoading,
     update,
     remove,
     add
@@ -20,7 +21,7 @@ export default function Home() {
   return (
       <Layout>
 
-        <TodoInput onCreate={add} />
+        <TodoInput createLoading={createLoading} onCreate={add} />
 
         { loading ? <p>Loading....</p> : 
           error ? <p className="text-red-600">{JSON.stringify(error)}</p> : 
