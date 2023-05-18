@@ -23,19 +23,19 @@ DATABASE_URL="mysql://password:user@host/db"
 This example uses MySQL.
 
 ## Setting up db
-In case you created a new mysql database, run `prisma migrate`
+In case you created a new mysql database, run prisma migrate:
 ```bash
 npx prisma migrate dev --name init
 ```
 
 
-In case of [PlanetScale](https://planetscale.com/), use 
+In case of [PlanetScale](https://planetscale.com/), use:
 ```bash
 npx prisma db push
 ```
 
 ## Starting (dev)
-After that:
+After that, start the dev server:
 ```bash
 pnpm dev
 ```
