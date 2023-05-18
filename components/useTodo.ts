@@ -1,4 +1,5 @@
 import { gql, useQuery, useMutation } from '@apollo/client';
+import useSWR from "swr";
 
 const GET_TODOS = gql`
     query Query {
@@ -41,33 +42,51 @@ const UPDATE_TODO = gql`
     }
 `
 
+const fetcher = async () => {
+    const response = await fetch("/api/graphql", {
+      body: JSON.stringify({ query: GET_TODOS.loc?.source.body }),
+      headers: { "Content-type": "application/json" },
+      method: "POST"
+    });
+    const { data } = await response.json();
+    return data;
+};
+
 export default function useTodo(){
 
-    const { data, loading, error } = useQuery(GET_TODOS,{
-        pollInterval: 30000,
-        // fetchPolicy: 'cache-first', // Used for first execution
-        // nextFetchPolicy: 'cache-first', // Used for subsequent executions
-    });
+    // console.log(GET_TODOS)
+
+    // using swr to revalidate is better than using pollInterval
+    const { data, error, isLoading, mutate } = useSWR('getTodos', fetcher)
+
+    // const { data, loading, error } = useQuery(GET_TODOS,{
+    //     pollInterval: 30000,
+    //     // fetchPolicy: 'cache-first', // Used for first execution
+    //     // nextFetchPolicy: 'cache-first', // Used for subsequent executions
+    // });
     
     const [
         createTodo, 
         { loading:createLoading, error:createError }
     ] = useMutation(CREATE_TODO,{
-        refetchQueries: [{ query: GET_TODOS }]
+        // refetchQueries: [{ query: GET_TODOS }]
+        onCompleted: () => mutate()
     });
 
     const [
         removeTodo, 
         { loading:removeLoading, error:removeError }
     ] = useMutation(REMOVE_TODO,{
-        refetchQueries: [{ query: GET_TODOS }]
+        // refetchQueries: [{ query: GET_TODOS }]
+        onCompleted: () => mutate()
     });
 
     const [
         updateTodo, 
         { loading:updateLoading, error:updateError }
     ] = useMutation(UPDATE_TODO,{
-        refetchQueries: [{ query: GET_TODOS }]
+        // refetchQueries: [{ query: GET_TODOS }]
+        onCompleted: () => mutate()
     });
 
     const update = async (id: string, text:string, done: boolean) => {
@@ -84,7 +103,7 @@ export default function useTodo(){
 
     return {
         todos: data?.getTodoAll,
-        loading,
+        loading: isLoading,
         error,
         createLoading,
         createError,
