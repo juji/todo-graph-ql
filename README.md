@@ -43,4 +43,12 @@ pnpm dev
 
 and go to [http://localhost:3000](http://localhost:3000).
 
+## Live version
+
+Live version is available at:
+
+[https://endearing-platypus-e762b8.netlify.app](https://endearing-platypus-e762b8.netlify.app)
+
+Make sure i know when you are accessing live version, because the db might need to be wwoken up.
+
 cheers, [https://jujiyangasli.com](jujiyangasli.com)
